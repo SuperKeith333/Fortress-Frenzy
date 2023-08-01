@@ -1460,6 +1460,10 @@ PrefabInstance:
       propertyPath: VoiceAppId
       value: 0eb5ec0d-2f27-4513-97f9-bf6faa97674e
       objectReference: {fileID: 0}
+    - target: {fileID: 4041120851213007359, guid: 9a96d92a6323f334898658a3f67f13fc, type: 3}
+      propertyPath: JoinRoomOnConnect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
