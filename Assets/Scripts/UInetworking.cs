@@ -54,8 +54,8 @@ public class UInetworking : MonoBehaviour
 
     public void JoinPublicRoom()
     {
-        //PhotonVRManager.JoinPrivateRoom(RoomCode);
-        //PhotonVRManager.SwitchScenes(2);
+        PhotonVRManager.JoinPrivateRoom("DASF");
+        PhotonVRManager.SwitchScenes(2);
         Debug.Log("worked!");
     }
 
