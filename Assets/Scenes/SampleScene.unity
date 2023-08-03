@@ -1342,7 +1342,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 481853908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 655324115}
+        m_TargetAssemblyTypeName: UInetworking, Assembly-CSharp
+        m_MethodName: JoinPrivateRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &481853908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2548,6 +2560,10 @@ PrefabInstance:
     - target: {fileID: 4041120851213007356, guid: 9a96d92a6323f334898658a3f67f13fc, type: 3}
       propertyPath: m_Name
       value: PhotonVRManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041120851213007356, guid: 9a96d92a6323f334898658a3f67f13fc, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4041120851213007358, guid: 9a96d92a6323f334898658a3f67f13fc, type: 3}
       propertyPath: m_LocalPosition.x
