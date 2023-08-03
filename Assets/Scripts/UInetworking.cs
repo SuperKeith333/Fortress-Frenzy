@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.VR;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UInetworking : MonoBehaviour
 {
     private int JoinGameClick = 0;
 
-    private string RoomCode;
+    public InputField JoinGameTXT;
 
+    public GameObject JoinGameOBJ;
     public GameObject LoadGameBT;
-    public GameObject JoinGameTXT;
     public GameObject LeaveGameBT;
     public GameObject BackBT;
 
     void Start()
     {
-
+        PhotonVRManager.Connect();
     }
 
     private void Update()
@@ -31,7 +32,7 @@ public class UInetworking : MonoBehaviour
     {
         LoadGameBT.SetActive(false);
         LeaveGameBT.SetActive(false);
-        JoinGameTXT.SetActive(true);
+        JoinGameOBJ.SetActive(true);
         BackBT.SetActive(true);
         JoinGameClick += 1;
     }
@@ -40,22 +41,15 @@ public class UInetworking : MonoBehaviour
     {
         LoadGameBT.SetActive(true);
         LeaveGameBT.SetActive(true);
-        JoinGameTXT.SetActive(false);
+        JoinGameOBJ.SetActive(false);
         BackBT.SetActive(false);
         JoinGameClick = 0;
     }
 
-    public void GetRoomCode(string code)
-    {
-        RoomCode = code;
-        Debug.Log(code);
-    }
-
-
     public void JoinPublicRoom()
     {
         // This should take you to the payload game with the roomname you created
-        PhotonVRManager.JoinPrivateRoom(RoomCode);
+        PhotonVRManager.JoinPrivateRoom(JoinGameTXT.text);
         PhotonVRManager.SwitchScenes(2);
         Debug.Log("worked!");
     }
