@@ -16,7 +16,7 @@ public class UInetworking : MonoBehaviour
 
     void Start()
     {
-        PhotonVRManager.Connect();
+
     }
 
     private void Update()
@@ -54,9 +54,15 @@ public class UInetworking : MonoBehaviour
 
     public void JoinPublicRoom()
     {
-        PhotonVRManager.JoinPrivateRoom("DASF");
+        // This should take you to the payload game with the roomname you created
+        PhotonVRManager.JoinPrivateRoom(RoomCode);
         PhotonVRManager.SwitchScenes(2);
         Debug.Log("worked!");
+    }
+
+    public void JoinPrivateRoom()
+    {
+        PhotonVRManager.SwitchScenes(1);
     }
 
     public void BT_LeaveGame()
