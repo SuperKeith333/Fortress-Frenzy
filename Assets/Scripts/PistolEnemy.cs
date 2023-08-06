@@ -12,9 +12,32 @@ public class EnemyTargeting : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
 
+    private bool TakeCover = false;
+
+    private Vector3[] Cover = new Vector3[4];
+
+    private Vector3[] SpawnLocations = new Vector3[4];
+
+    public GameObject EminyPrefab;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        for(int i = 0; i < GameObject.FindGameObjectsWithTag("Cover").Length; i++)
+        {
+            Cover[i] = GameObject.FindGameObjectsWithTag("Cover")[i].transform.position;
+        }
+        for(int i = 0; i < GameObject.FindGameObjectsWithTag("Enimy Spawn").Length; i++)
+        {
+            SpawnLocations[i] = GameObject.FindGameObjectsWithTag("Enimy Spawm")[i].transform.position;
+        }
+    }
+    
+    private void SpawnEnimys()
+    {
+        // called when enimy is at certain health (not implemented
+        GameObject newEnimy = Instantiate(EminyPrefab);
+        newEnimy.transform.position = SpawnLocations[Random.Range(0, SpawnLocations.Length)];
     }
 
     private void Update()
@@ -34,6 +57,14 @@ public class EnemyTargeting : MonoBehaviour
         Debug.Log(gotopayload);
         yield return new WaitForSeconds(10);
         gotopayload = true;
+    }
+    IEnumerator waiter2()
+    {
+        yield return new WaitForSeconds(20);
+        if(Random.Range(0, 5) == 0 || Random.Range(0, 5) == 1)
+        {
+            navMeshAgent.destination = Cover[Random.Range(0, 5)];
+        }
     }
 
     void OnCollisionEnter(Collision collision)
