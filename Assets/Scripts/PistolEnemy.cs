@@ -10,6 +10,8 @@ public class EnemyTargeting : MonoBehaviour
 
     private bool gotopayload = true;
 
+    public int enemyhealth = 100;
+
     private NavMeshAgent navMeshAgent;
 
     private bool TakeCover = false;
@@ -33,15 +35,21 @@ public class EnemyTargeting : MonoBehaviour
         }
     }
     
-    private void SpawnEnimys()
+    private void SpawnEnemys()
     {
-        // called when enimy is at certain health (not implemented
+        // called when enimy is at certain health (now implemeted)
         GameObject newEnimy = Instantiate(EminyPrefab);
         newEnimy.transform.position = SpawnLocations[Random.Range(0, SpawnLocations.Length)];
     }
 
     private void Update()
     {
+        if (enemyhealth <= 0)
+        {
+            SpawnEnemys();
+            Destroy(this.gameObject);
+        }
+
         if (gotopayload == true)
         {
             navMeshAgent.destination = payload.position;
