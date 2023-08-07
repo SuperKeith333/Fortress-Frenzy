@@ -10,7 +10,7 @@ public class EnemyTargeting : MonoBehaviour
 
     private bool gotopayload = true;
 
-    public int enemyhealth = 100;
+    public int EnemyHealth = 100;
 
     private NavMeshAgent navMeshAgent;
 
@@ -20,7 +20,7 @@ public class EnemyTargeting : MonoBehaviour
 
     private Vector3[] SpawnLocations = new Vector3[4];
 
-    public GameObject EminyPrefab;
+    public GameObject EmenyPrefab;
 
     private void Awake()
     {
@@ -29,22 +29,22 @@ public class EnemyTargeting : MonoBehaviour
         {
             Cover[i] = GameObject.FindGameObjectsWithTag("Cover")[i].transform.position;
         }
-        for(int i = 0; i < GameObject.FindGameObjectsWithTag("Enimy Spawn").Length; i++)
+        for(int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy Spawn").Length; i++)
         {
-            SpawnLocations[i] = GameObject.FindGameObjectsWithTag("Enimy Spawm")[i].transform.position;
+            SpawnLocations[i] = GameObject.FindGameObjectsWithTag("Enemy Spawm")[i].transform.position;
         }
     }
     
     private void SpawnEnemys()
     {
         // called when enimy is at certain health (now implemeted)
-        GameObject newEnimy = Instantiate(EminyPrefab);
+        GameObject newEnimy = Instantiate(EmenyPrefab);
         newEnimy.transform.position = SpawnLocations[Random.Range(0, SpawnLocations.Length)];
     }
 
     private void Update()
     {
-        if (enemyhealth <= 0)
+        if (EnemyHealth <= 0)
         {
             SpawnEnemys();
             Destroy(this.gameObject);
